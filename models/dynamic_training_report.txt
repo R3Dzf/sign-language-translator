@@ -1,0 +1,30 @@
+Dynamic ASL Sequence Model Training Report
+=========================================
+Sequence length: 30
+Samples used: 30
+Training samples: 21
+Validation samples: 5
+Test samples: 4
+Samples per label: {'hello': 5, 'j': 25}
+
+Train accuracy: 1.0000
+Validation accuracy: 1.0000
+Test accuracy: 1.0000
+
+Warning: Possible overfitting or data leakage detected.
+
+Confusion matrix:
+       hello  j
+hello      1  0
+j          0  3
+
+Classification report:
+              precision    recall  f1-score   support
+
+       hello       1.00      1.00      1.00         1
+           j       1.00      1.00      1.00         3
+
+    accuracy                           1.00         4
+   macro avg       1.00      1.00      1.00         4
+weighted avg       1.00      1.00      1.00         4
+
