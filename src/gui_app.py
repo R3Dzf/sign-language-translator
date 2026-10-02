@@ -537,10 +537,10 @@ class SignLanguageGUI:
         self.style.configure("AboutCard.TFrame", background="#f7f1ea")
         self.style.configure("AboutInner.TFrame", background="#fffdf9")
         self.style.configure("AboutTitle.TLabel", background="#f7f1ea", foreground="#123047", font=("Segoe UI", 22, "bold"))
-        self.style.configure("AboutSection.TLabel", background="#f7f1ea", foreground="#0f766e", font=("Tahoma", 17, "bold"))
-        self.style.configure("AboutName.TLabel", background="#fffdf9", foreground="#18415d", font=("Tahoma", 14, "bold"))
-        self.style.configure("AboutMeta.TLabel", background="#f7f1ea", foreground="#49657a", font=("Tahoma", 13, "bold"))
-        self.style.configure("AboutAccent.TLabel", background="#f7f1ea", foreground="#0f766e", font=("Tahoma", 16, "bold"))
+        self.style.configure("AboutSection.TLabel", background="#f7f1ea", foreground="#0f766e", font=("Segoe UI", 17, "bold"))
+        self.style.configure("AboutName.TLabel", background="#fffdf9", foreground="#18415d", font=("Segoe UI", 15, "bold"))
+        self.style.configure("AboutMeta.TLabel", background="#f7f1ea", foreground="#49657a", font=("Segoe UI", 13))
+        self.style.configure("AboutAccent.TLabel", background="#f7f1ea", foreground="#0f766e", font=("Segoe UI", 16, "bold"))
         self.style.configure("AboutBio.TLabel", background="#fffdf9", foreground="#3c5568", font=("Segoe UI", 12), wraplength=900, justify="center")
 
         for child in self.about_tab.winfo_children():
@@ -566,57 +566,75 @@ class SignLanguageGUI:
         card.bind("<Configure>", update_scroll_region)
         canvas.bind("<Configure>", update_scroll_region)
 
-        ttk.Label(card, text="About The Project", style="AboutTitle.TLabel", anchor="center", justify="center").grid(row=0, column=0, pady=(0, 10))
-        ttk.Label(card, text="مشروع مترجم لغة الإشارة", style="AboutAccent.TLabel", anchor="center", justify="center").grid(row=1, column=0, pady=(0, 18))
+        ttk.Label(
+            card,
+            text="About the Project",
+            style="AboutTitle.TLabel",
+            anchor="center",
+            justify="center",
+        ).grid(row=0, column=0, pady=(0, 10))
+
+        ttk.Label(
+            card,
+            text="ASL Sign Language Translator",
+            style="AboutAccent.TLabel",
+            anchor="center",
+            justify="center",
+        ).grid(row=1, column=0, pady=(0, 18))
 
         bio_frame = ttk.Frame(card, style="AboutInner.TFrame", padding=18)
-        bio_frame.grid(row=2, column=0, sticky="ew", pady=(0, 18))
+        bio_frame.grid(row=2, column=0, sticky="ew", pady=(0, 22))
         bio_frame.columnconfigure(0, weight=1)
+
         ttk.Label(
             bio_frame,
             text=(
-                "This project aims to build an instant translator for American Sign Language using "
-                "a camera, computer vision, and machine learning technologies. It will recognize "
-                "hand gestures and convert them into text in real time, with the potential for "
-                "future expansion to add more gestures and improve the user experience."
+                "This project is a real-time American Sign Language translator built with "
+                "computer vision and machine learning. It uses a camera to detect hand landmarks, "
+                "recognize supported signs, and convert stable predictions into text. The application "
+                "also includes tools for collecting custom data, training recognition models, and "
+                "reviewing model performance."
             ),
             style="AboutBio.TLabel",
             anchor="center",
             justify="center",
         ).grid(row=0, column=0, sticky="ew")
 
-        ttk.Label(card, text="إعداد الفريق", style="AboutSection.TLabel", anchor="center", justify="center").grid(row=3, column=0, pady=(0, 14))
+        ttk.Label(
+            card,
+            text="Developed by",
+            style="AboutSection.TLabel",
+            anchor="center",
+            justify="center",
+        ).grid(row=3, column=0, pady=(0, 14))
 
-        team_names = [
-            "أحمد يوسف يوسف منصور بوشه",
-            "ابانوب امير جبران جرجس جبران",
-            "محمود السيد على السعيد الترابى",
-            "انس محمد سعيد محمد عفيفى", 
-        ]
+        name_frame = ttk.Frame(card, style="AboutInner.TFrame", padding=18)
+        name_frame.grid(row=4, column=0, sticky="ew", pady=(0, 20))
+        name_frame.columnconfigure(0, weight=1)
 
-        names_frame = ttk.Frame(card, style="AboutInner.TFrame", padding=16)
-        names_frame.grid(row=4, column=0, sticky="ew", pady=(0, 18))
-        names_frame.columnconfigure(0, weight=1)
+        ttk.Label(
+            name_frame,
+            text="Ahmed Youssef Bosha",
+            style="AboutName.TLabel",
+            anchor="center",
+            justify="center",
+        ).grid(row=0, column=0, pady=6, sticky="ew")
 
-        for index, name in enumerate(team_names):
-            ttk.Label(
-                names_frame,
-                text=name,
-                style="AboutName.TLabel",
-                anchor="center",
-                justify="center",
-            ).grid(row=index * 2, column=0, pady=6, sticky="ew")
-            if index < len(team_names) - 1:
-                ttk.Separator(names_frame, orient="horizontal").grid(
-                    row=index * 2 + 1,
-                    column=0,
-                    sticky="ew",
-                    pady=3,
-                )
+        ttk.Label(
+            card,
+            text="Computer & Control Engineering",
+            style="AboutAccent.TLabel",
+            anchor="center",
+            justify="center",
+        ).grid(row=5, column=0, pady=(4, 8))
 
-        ttk.Label(card, text="قسم حاسبات وتحكم آلي", style="AboutAccent.TLabel", anchor="center", justify="center").grid(row=5, column=0, pady=(4, 8))
-        ttk.Label(card, text="مستوى اول", style="AboutMeta.TLabel", anchor="center", justify="center").grid(row=6, column=0, pady=3)
-        ttk.Label(card, text="كلية الهندسة - جامعة طنطا", style="AboutMeta.TLabel", anchor="center", justify="center").grid(row=7, column=0, pady=(3, 6))
+        ttk.Label(
+            card,
+            text="Faculty of Engineering — Tanta University",
+            style="AboutMeta.TLabel",
+            anchor="center",
+            justify="center",
+        ).grid(row=6, column=0, pady=(3, 6))
 
     def _build_translate_tab(self) -> None:
         wrapper = ttk.Frame(self.translate_tab, padding=16)
