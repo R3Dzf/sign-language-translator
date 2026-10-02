@@ -8,6 +8,8 @@ Python · OpenCV · MediaPipe · scikit-learn · TensorFlow
 
 </div>
 
+![Real-time ASL recognition demo](assets/screenshots/translator-demo.png)
+
 ---
 
 ## Overview
@@ -22,9 +24,7 @@ It supports static hand-shape recognition, an experimental dynamic-sign pipeline
 
 ## Application Preview
 
-### Real-Time Translator
-
-![Sign Language Translator — live translator](assets/screenshots/translator.png)
+The screenshot above shows the real-time recognition workflow with MediaPipe hand landmarks, model prediction, confidence, stability checking, and accepted output.
 
 ### Data Collection
 
